@@ -46,7 +46,7 @@ export class SurveyQuestionRadiogroup extends SurveyQuestionElementBase {
     var value = this.getStateValue();
     return this.question.columns.map((column: any, ci: number) => {
       var items = column.map((item: any, ii: number) =>
-        this.renderItem(item, value, cssClasses, '' + ci + ii)
+        this.renderItem(item, value, cssClasses, "" + ci + ii)
       );
       return (
         <div key={"column" + ci} className={this.question.getColumnClass()}>
@@ -60,7 +60,7 @@ export class SurveyQuestionRadiogroup extends SurveyQuestionElementBase {
     var value = this.getStateValue();
     for (var i = 0; i < this.question.visibleChoices.length; i++) {
       var item = this.question.visibleChoices[i];
-      items.push(this.renderItem(item, value, cssClasses, '' + i));
+      items.push(this.renderItem(item, value, cssClasses, "" + i));
     }
     return items;
   }
@@ -171,6 +171,7 @@ export class SurveyQuestionRadioItem extends ReactSurveyElement {
             value={this.item.value}
             disabled={this.isDisplayMode || !this.item.isEnabled}
             onChange={this.handleOnChange}
+            onClick={this.handleOnChange}
             aria-required={this.question.isRequired}
             aria-label={locText.renderedHtml}
           />
@@ -183,10 +184,7 @@ export class SurveyQuestionRadioItem extends ReactSurveyElement {
             </svg>
           </span>
           <span className="check" />
-          <span
-            className={controlLabelClass}
-            title={locText["koRenderedHtml"]}
-          >
+          <span className={controlLabelClass} title={locText["koRenderedHtml"]}>
             {itemText}
           </span>
         </label>
